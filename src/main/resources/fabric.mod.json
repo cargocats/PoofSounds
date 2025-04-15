@@ -1,0 +1,41 @@
+{
+	"schemaVersion": 1,
+	"id": "poofsound",
+	"version": "${version}",
+	"name": "Poof Sound",
+	"description": "Poof Sounds from MC:SM",
+	"authors": [
+		"cargocat"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/poofsound/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"cargocat.poofsound.PoofSound"
+		],
+		"client": [
+			"cargocat.poofsound.PoofSoundClient"
+		]
+	},
+	"mixins": [
+		"poofsound.mixins.json",
+		{
+			"config": "poofsound.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.16.13",
+		"minecraft": "~1.21.1",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

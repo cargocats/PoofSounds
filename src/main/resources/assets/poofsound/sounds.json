@@ -1,0 +1,15 @@
+{
+  "poof": {
+    "sounds": [
+      {
+        "name": "poofsound:poof1"
+      },
+      {
+        "name": "poofsound:poof2"
+      },
+      {
+        "name": "poofsound:poof3"
+      }
+    ]
+  }
+}
