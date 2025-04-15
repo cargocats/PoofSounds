@@ -8,7 +8,6 @@ import net.minecraft.util.math.Vec3d;
 
 import java.util.Iterator;
 import java.util.Map;
-import java.util.UUID;
 
 public class PoofSoundClient implements ClientModInitializer {
 	@Override
@@ -30,10 +29,10 @@ public class PoofSoundClient implements ClientModInitializer {
 					entry.setValue(entity.getPos());
 				} else {
 					Vec3d pos = entry.getValue();
-					client.execute(() -> {
+					client.execute(() ->
 						client.world.playSound(pos.x, pos.y, pos.z,
-								PoofSound.POOF_SOUND_EVENT, SoundCategory.AMBIENT, 1.0f, 1.0f, true);
-					});
+								PoofSound.POOF_SOUND_EVENT, SoundCategory.AMBIENT, 1.0f, 1.0f, true)
+					);
 					iterator.remove();
 				}
 			}
