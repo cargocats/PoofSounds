@@ -25,6 +25,7 @@ public class ClientPlayNetworkHandlerMixin {
 				Entity entity = packet.getEntity(world);
 				if (entity == null) return;
 				if (!(entity instanceof LivingEntity)) return;
+				if (entity.getType().isIn(PoofSound.TAG_KEY_NO_POOF_SOUND)) return;
 
 				PoofSound.recentlyDiedEntities.put(entity.getId(), entity.getPos());
 			});
