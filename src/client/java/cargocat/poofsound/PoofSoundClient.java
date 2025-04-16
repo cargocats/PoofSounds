@@ -1,6 +1,5 @@
 package cargocat.poofsound;
 
-import cargocat.poofsound.config.ModMenuIntegration;
 import cargocat.poofsound.config.PoofConfig;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
