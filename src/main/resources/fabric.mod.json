@@ -20,6 +20,9 @@
 		],
 		"client": [
 			"cargocat.poofsound.PoofSoundClient"
+		],
+		"modmenu": [
+			"cargocat.poofsound.config.ModMenuIntegration"
 		]
 	},
 	"mixins": [
@@ -33,7 +36,8 @@
 		"fabricloader": ">=0.16.13",
 		"minecraft": "~1.21.1",
 		"java": ">=21",
-		"fabric-api": "*"
+		"fabric-api": "*",
+		"yet_another_config_lib_v3": ">=3.6.1+1.21-fabric"
 	},
 	"suggests": {
 		"another-mod": "*"

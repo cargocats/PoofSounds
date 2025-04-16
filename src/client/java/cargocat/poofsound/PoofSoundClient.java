@@ -1,5 +1,7 @@
 package cargocat.poofsound;
 
+import cargocat.poofsound.config.ModMenuIntegration;
+import cargocat.poofsound.config.PoofConfig;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.entity.Entity;
@@ -13,6 +15,8 @@ public class PoofSoundClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
 		// This entrypoint is suitable for setting up client-specific logic, such as rendering.
+		PoofConfig.HANDLER.load();
+
 		ClientTickEvents.END_CLIENT_TICK.register((client) -> {
 			if (client.world == null) {
 				return;
@@ -29,10 +33,13 @@ public class PoofSoundClient implements ClientModInitializer {
 					entry.setValue(entity.getPos());
 				} else {
 					Vec3d pos = entry.getValue();
-					client.execute(() ->
+					client.execute(() -> {
+						if (!PoofConfig.HANDLER.instance().poofSoundsEnabled) {
+							return;
+						}
 						client.world.playSound(pos.x, pos.y, pos.z,
-								PoofSound.POOF_SOUND_EVENT, SoundCategory.AMBIENT, 1.0f, 1.0f, true)
-					);
+								PoofSound.POOF_SOUND_EVENT, SoundCategory.NEUTRAL, PoofConfig.HANDLER.instance().poofVolume / 100.0f, 1.0f, true);
+					});
 					iterator.remove();
 				}
 			}

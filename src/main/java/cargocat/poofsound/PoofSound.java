@@ -21,7 +21,8 @@ public class PoofSound implements ModInitializer {
 	public static final HashMap<Integer, Vec3d> recentlyDiedEntities = new HashMap<>();
 	@Override
 	public void onInitialize() {
-		Registry.register(Registries.SOUND_EVENT, POOF_SOUND_ID, POOF_SOUND_EVENT);
 		LOGGER.info("Poof sounds initializing");
+		Registry.register(Registries.SOUND_EVENT, POOF_SOUND_ID, POOF_SOUND_EVENT);
+		LOGGER.info("Poof sounds finished initialization");
 	}
 }
