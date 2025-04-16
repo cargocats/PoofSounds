@@ -16,8 +16,7 @@ import org.slf4j.LoggerFactory;
 import java.util.*;
 
 public class PoofSound implements ModInitializer {
-	public static final String MOD_ID = "data";
-
+	public static final String MOD_ID = "poofsound";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 	public static final Identifier POOF_SOUND_ID = Identifier.of("poofsound:poof");
 	public static final SoundEvent POOF_SOUND_EVENT = SoundEvent.of(POOF_SOUND_ID);

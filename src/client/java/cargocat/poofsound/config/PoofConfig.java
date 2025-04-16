@@ -10,7 +10,7 @@ import net.minecraft.util.Identifier;
 public class PoofConfig {
     public static ConfigClassHandler<PoofConfig> HANDLER =
             ConfigClassHandler.createBuilder(PoofConfig.class)
-            .id(Identifier.of("data", "config"))
+            .id(Identifier.of("poofsound", "config"))
                     .serializer(config -> GsonConfigSerializerBuilder.create(config)
                             .setPath(FabricLoader.getInstance().getConfigDir().resolve("poofsound.json5"))
                             .appendGsonBuilder(GsonBuilder::setPrettyPrinting) // not needed, pretty print by default
