@@ -2,14 +2,14 @@
 	"schemaVersion": 1,
 	"id": "poofsound",
 	"version": "${version}",
-	"name": "Poof Sound",
+	"name": "Poof Sounds",
 	"description": "Poof Sounds from MC:SM",
 	"authors": [
 		"cargocat"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://github.com/cargocats/PoofSounds/",
+		"sources": "https://github.com/cargocats/PoofSounds/"
 	},
 	"license": "GPLv3",
 	"icon": "assets/poofsound/icon.png",

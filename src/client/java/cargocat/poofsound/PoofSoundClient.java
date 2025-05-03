@@ -11,37 +11,35 @@ import java.util.Iterator;
 import java.util.Map;
 
 public class PoofSoundClient implements ClientModInitializer {
-	@Override
-	public void onInitializeClient() {
-		// This entrypoint is suitable for setting up client-specific logic, such as rendering.
-		PoofConfig.HANDLER.load();
+    @Override
+    public void onInitializeClient() {
+        PoofConfig.HANDLER.load();
+        PoofConfig poofConfig = PoofConfig.HANDLER.instance();
 
-		ClientTickEvents.END_CLIENT_TICK.register((client) -> {
-			if (client.world == null) {
-				return;
-			}
+        ClientTickEvents.END_CLIENT_TICK.register((client) -> {
+            if (client.world == null) {
+                return;
+            }
 
-			Iterator<Map.Entry<Integer, Vec3d>> iterator = PoofSound.recentlyDiedEntities.entrySet().iterator();
+            Iterator<Map.Entry<Integer, Vec3d>> iterator = PoofSound.recentlyDiedEntities.entrySet().iterator();
 
-			while (iterator.hasNext()) {
-				Map.Entry<Integer, Vec3d> entry = iterator.next();
-				int id = entry.getKey();
-				Entity entity = client.world.getEntityById(id);
+            while (iterator.hasNext()) {
+                Map.Entry<Integer, Vec3d> entry = iterator.next();
+                int id = entry.getKey();
+                Entity entity = client.world.getEntityById(id);
 
-				if (entity != null) {
-					entry.setValue(entity.getPos());
-				} else {
-					Vec3d pos = entry.getValue();
-					client.execute(() -> {
-						if (!PoofConfig.HANDLER.instance().poofSoundsEnabled) {
-							return;
-						}
-						client.world.playSound(pos.x, pos.y, pos.z,
-								PoofSound.POOF_SOUND_EVENT, SoundCategory.NEUTRAL, PoofConfig.HANDLER.instance().poofVolume / 100.0f, 1.0f, true);
-					});
-					iterator.remove();
-				}
-			}
-		});
-	}
+                if (entity != null) {
+                    entry.setValue(entity.getPos());
+                } else {
+                    if (!poofConfig.poofSoundsEnabled) {
+                        return;
+                    }
+
+                    Vec3d pos = entry.getValue();
+                    client.execute(() -> client.world.playSound(pos.x, pos.y, pos.z, PoofSound.POOF_SOUND_EVENT, SoundCategory.NEUTRAL, PoofConfig.HANDLER.instance().poofVolume / 100.0f, 1.0f, true));
+                    iterator.remove();
+                }
+            }
+        });
+    }
 }

@@ -25,8 +25,8 @@ public class PoofSound implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		LOGGER.info("Poof sounds initializing");
+		LOGGER.info("Poof sounds initializing sounds");
 		Registry.register(Registries.SOUND_EVENT, POOF_SOUND_ID, POOF_SOUND_EVENT);
-		LOGGER.info("Poof sounds finished initialization");
+		LOGGER.info("Poof sounds finished initialization of sounds");
 	}
 }

@@ -1,6 +1,6 @@
 package cargocat.poofsound.config;
 
-import com.google.gson.GsonBuilder;
+import cargocat.poofsound.PoofSound;
 import dev.isxander.yacl3.config.v2.api.ConfigClassHandler;
 import dev.isxander.yacl3.config.v2.api.SerialEntry;
 import dev.isxander.yacl3.config.v2.api.serializer.GsonConfigSerializerBuilder;
@@ -10,10 +10,9 @@ import net.minecraft.util.Identifier;
 public class PoofConfig {
     public static ConfigClassHandler<PoofConfig> HANDLER =
             ConfigClassHandler.createBuilder(PoofConfig.class)
-            .id(Identifier.of("poofsound", "config"))
+            .id(Identifier.of(PoofSound.MOD_ID, "config"))
                     .serializer(config -> GsonConfigSerializerBuilder.create(config)
-                            .setPath(FabricLoader.getInstance().getConfigDir().resolve("poofsound.json5"))
-                            .appendGsonBuilder(GsonBuilder::setPrettyPrinting) // not needed, pretty print by default
+                            .setPath(FabricLoader.getInstance().getConfigDir().resolve(PoofSound.MOD_ID + ".json5"))
                             .setJson5(true)
                             .build())
                     .build();
