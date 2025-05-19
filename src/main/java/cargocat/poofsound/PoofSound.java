@@ -18,15 +18,14 @@ import java.util.*;
 public class PoofSound implements ModInitializer {
 	public static final String MOD_ID = "poofsound";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-	public static final Identifier POOF_SOUND_ID = Identifier.of("poofsound:poof");
+	public static final Identifier POOF_SOUND_ID = Identifier.of(MOD_ID, "poof");
 	public static final SoundEvent POOF_SOUND_EVENT = SoundEvent.of(POOF_SOUND_ID);
 	public static final HashMap<Integer, Vec3d> recentlyDiedEntities = new HashMap<>();
-	public static final TagKey<EntityType<?>> TAG_KEY_NO_POOF_SOUND = TagKey.of(RegistryKeys.ENTITY_TYPE, Identifier.of("poofsound", "no_poof_sound"));
+	public static final TagKey<EntityType<?>> TAG_KEY_NO_POOF_SOUND = TagKey.of(RegistryKeys.ENTITY_TYPE, Identifier.of(MOD_ID, "no_poof_sound"));
 
 	@Override
 	public void onInitialize() {
-		LOGGER.info("Poof sounds initializing sounds");
 		Registry.register(Registries.SOUND_EVENT, POOF_SOUND_ID, POOF_SOUND_EVENT);
-		LOGGER.info("Poof sounds finished initialization of sounds");
+		LOGGER.info("Initialized Poof Sounds!");
 	}
 }
