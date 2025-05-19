@@ -1,0 +1,13 @@
+{
+  "poofsounds.name": "Poof Sounds",
+  "poofsounds.sound_options": "Sound Options",
+  "poofsounds.sound_options.tooltip": "Control sound settings for poof sounds",
+
+  "poofsounds.group.sound.title": "Sound",
+  "poofsounds.group.sound.description": "Control volume and toggle the mod",
+
+  "poofsounds.name.volume" : "Poof Volume",
+
+  "poofsounds.option.enabled": "Are poof sounds enabled?",
+  "poofsounds.option.volume": "The volume of the poof sound from 0% to 200%"
+}
