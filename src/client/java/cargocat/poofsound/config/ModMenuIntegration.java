@@ -1,6 +1,5 @@
 package cargocat.poofsound.config;
 
-import cargocat.poofsound.PoofSound;
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
 import dev.isxander.yacl3.api.*;
