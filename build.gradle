@@ -1,6 +1,21 @@
 plugins {
-	id 'fabric-loom' version '1.10-SNAPSHOT'
-	id 'maven-publish'
+	id "fabric-loom" version "1.10-SNAPSHOT"
+	id "maven-publish"
+	id "com.modrinth.minotaur" version "2.+"
+}
+
+def envFile = file(".env")
+def env = [:]
+
+if (envFile.exists()) {
+	envFile.eachLine { line ->
+		def matcher = line =~ /^\s*([\w.-]+)\s*=\s*(.*)\s*$/
+		if (matcher.matches()) {
+			def key = matcher[0][1]
+			def value = matcher[0][2].replaceAll(/^["']|["']$/, "")
+			env[key] = value
+		}
+	}
 }
 
 version = project.mod_version
@@ -17,8 +32,8 @@ repositories {
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
 	maven {
-		name 'Xander Maven'
-		url 'https://maven.isxander.dev/releases'
+		name "Xander Maven"
+		url "https://maven.isxander.dev/releases"
 	}
 
 	maven {
@@ -100,3 +115,22 @@ publishing {
 		// retrieving dependencies.
 	}
 }
+
+modrinth {
+	token = env["MODRINTH_TOKEN"]
+	projectId = "poof-sounds-fabric"
+	versionNumber = "1.3.1"
+	versionName = "Poof Sounds " + modrinth.getVersionNumber().get() + " for Minecraft 1.21.1 Fabric"
+	versionType = "release"
+	uploadFile = remapJar // With Loom, this MUST be set to `remapJar` instead of `jar`!
+	gameVersions = ["1.21.1"]
+	loaders = ["fabric"]
+	changelog = rootProject.file("changelog.md").text
+	dependencies {
+		required.project "fabric-api"
+		optional.version "yacl", "3.6.6+1.21.1-fabric"
+	}
+	syncBodyFrom = rootProject.file("README.md").text
+}
+
+tasks.modrinth.dependsOn(tasks.modrinthSyncBody)
