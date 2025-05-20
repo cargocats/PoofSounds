@@ -35,7 +35,7 @@ public class PoofSoundClient implements ClientModInitializer {
                     Vec3d entityPos = entry.getValue();
                     client.getSoundManager().play(new PositionedSoundInstance(
                             PoofSound.POOF_SOUND_EVENT,
-                            SoundCategory.NEUTRAL,
+                            SoundCategory.AMBIENT,
                             poofConfigInstance.poofVolume / 100.0f,1.0f, SoundInstance.createRandom(),
                             entityPos.x, entityPos.y, entityPos.z
                     ));
